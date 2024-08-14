@@ -140,7 +140,7 @@ while((norm((x0 - xs), 2) > rob_diam/10) && ((mpcIter * T) < sim_time)) % termin
 
     t(mpcIter + 1) = t0;
 
-    [t0, x0, u0] = shift(T, t0, x0, u + randn(1,2)/10, f); % apply only the first control
+    [t0, x0, u0] = shift(T, t0, x0, u, f); % apply only the first control
 
     xx(:, mpcIter + 2) = x0;
 
@@ -153,6 +153,3 @@ main_loop_time = toc(main_loop);
 disp(main_loop_time/mpcIter);
 
 Draw_MPC_point_stabilization_v1(t, xx, xx1, u_cl, xs, N, rob_diam, false, "diff_drive_point_stabilization");
-
-% TODO: change to mecanum wheel
-% TODO: cartPend
